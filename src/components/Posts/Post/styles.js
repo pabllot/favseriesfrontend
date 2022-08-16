@@ -49,4 +49,8 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  desc: {
+    maxHeight: '150px',
+    overflow: 'auto'
+  }
 });
