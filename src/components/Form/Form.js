@@ -27,19 +27,20 @@ const Form = ({ setCurrentId, currentId }) => {
       dispatch(updatePost(currentId, postData))
     } else
     dispatch(createPost(postData))
-    setPostData({creator: '', title: '', description: '', tags: '', selectedFile: ''})
+    clear()
   }
 
   const clear = () => {
     setPostData({
       creator: '', title: '', description: '', tags: '', selectedFile: ''
     }) 
+    setCurrentId(null)
   }
 
   return (
     <Paper className={classes.paper}>
       <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant='h6'>Let us know your fav series</Typography>
+        <Typography variant='h6'>{currentId ? 'Editing' : 'Adding'} your favorite serie</Typography>
           <TextField name='creator' variant='outlined' label='Creator' fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value})} />
           <TextField name='title' variant='outlined' label='Title' fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value})} />
           <TextField name='description' variant='outlined' label='Description' fullWidth value={postData.description} onChange={(e) => setPostData({ ...postData, description: e.target.value})} />
