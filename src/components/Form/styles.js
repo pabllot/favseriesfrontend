@@ -17,6 +17,7 @@ export default makeStyles((theme) => ({
   fileInput: {
     width: '97%',
     margin: '10px 0',
+    overflow: 'hidden'
   },
   buttonSubmit: {
     marginBottom: 10,
