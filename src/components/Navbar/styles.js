@@ -9,21 +9,15 @@ export default makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '10px 50px'
+        padding: '10px 10px',
+        flexWrap: 'wrap'
     },
     heading: {
-        color: 'rgba(0, 183, 255, 1)',
+        color: 'secondary',
         textDecoration:'none' 
     
     },
-    image: {
-        marginLeft: '15px'
-    },
-    toolbar: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        width: '400px'
-    },
+  
     profile: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -41,10 +35,24 @@ export default makeStyles((theme) => ({
         color: theme.palette.getContrastText(deepPurple[500]),
         backgroundColor: deepPurple[500]
     },
+    signin: {
+        width: '10px',
+        height: '38px',
+        fontSize: '12px',
+        padding: '0',
+    
+        
+    },
     [theme.breakpoints.down('xs')]:{
 
         mainContainer: {
           flexDirection: 'column-reverse'
+        },
+        heading: {
+            width: '10px',
+            fontSize: '27px',
+            alignItems: 'center',
+            justifyContent: 'center'
         }
       }
 }))

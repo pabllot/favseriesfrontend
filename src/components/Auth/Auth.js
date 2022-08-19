@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import useStyles from './styles'
 import Input from './input'
+import { GoogleLogin, googleLogout } from '@react-oauth/google'
+import { useDispatch } from 'react-redux'
 
 const Auth = () => {
   const classes = useStyles()
   const [showPassword, setShowPassword] = useState(false)
-
+  const dispatch = useDispatch()
   const [isSignup, setIsSignup] = useState(false)
 
   const handleShowPassword = () => setShowPassword((prev) => !prev)
@@ -23,6 +25,17 @@ const Auth = () => {
   const switchMode = () => {
     setIsSignup((prev) => !prev)
     handleShowPassword(false)
+  }
+
+  const googleSuccess = async (res) => {
+    const result = res
+   
+
+    try {
+      dispatch({ type: 'AUTH', data: { result }})
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -47,6 +60,15 @@ const Auth = () => {
           </Grid>
           <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
             {isSignup ? 'Sign up' : 'Sign in'}
+          </Button>
+          <Button  fullWidth  color='inherit'>
+            {isSignup ? (
+              <div>you're in</div>
+            ) : (
+              <GoogleLogin
+              onSuccess={(googleSuccess)}
+              onError={() => console.log('Errrrrou')} />
+            )}
           </Button>
           <Grid container justify='flex-end'>
             <Grid item>
