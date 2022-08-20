@@ -1,29 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core'
 import useStyles from './styles'
 import { GoogleLogin, googleLogout } from '@react-oauth/google'
 import { useDispatch } from 'react-redux'
 import jwt_decoded from 'jwt-decode'
+import { useNavigate } from 'react-router-dom'
+
 
 
 const Navbar = () => {
-    const classes = useStyles()
-    const dispatch = useDispatch()
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const [user, setUser ] = useState(JSON.parse(localStorage.getItem('profile')))
+  const navigate = useNavigate()
 
-    const user = null 
+  
+  
+  useEffect(() => {
+    const resu = user?.credential
+
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  
+  }, [setUser])
 
     const googleSuccess = async (res) => {
-        const result = jwt_decoded(res?.credential)
-     
+        const result = jwt_decoded(res?.credential)     
     
         try {
           dispatch({ type: 'AUTH', data: { result }})
+          navigate('/')
         } catch (error) {
           console.log(error)
         }
       }
 
+    
     return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
         <div className={classes.brandContainer}>
@@ -32,8 +44,8 @@ const Navbar = () => {
         <Toolbar className={classes.toolbar}>
             {user ? (
                 <div className={classes.profile}>
-                    <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.chartAt(0)}</Avatar>
-                    <Typography className={classes.userName} variant='h6'>{user.result.name}</Typography>
+                    <Avatar className={classes.purple} alt={user.result.given_name} src={user.result.picture}>oi</Avatar>
+                    <Typography className={classes.userName} variant='h6'>{user.result.given_name}</Typography>
                     <Button variant='contained' className={classes.logout} color='secondary'></Button>
                 </div>
             ) : (

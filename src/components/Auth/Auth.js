@@ -5,12 +5,15 @@ import useStyles from './styles'
 import Input from './input'
 import { GoogleLogin, googleLogout } from '@react-oauth/google'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Auth = () => {
   const classes = useStyles()
   const [showPassword, setShowPassword] = useState(false)
   const dispatch = useDispatch()
   const [isSignup, setIsSignup] = useState(false)
+  const navigate = useNavigate()
+
 
   const handleShowPassword = () => setShowPassword((prev) => !prev)
 
@@ -29,10 +32,11 @@ const Auth = () => {
 
   const googleSuccess = async (res) => {
     const result = res
-   
 
     try {
       dispatch({ type: 'AUTH', data: { result }})
+
+      navigate('/')
     } catch (error) {
       console.log(error)
     }
