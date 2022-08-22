@@ -6,23 +6,35 @@ import Input from './input'
 import { GoogleLogin, googleLogout } from '@react-oauth/google'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import jwt_decoded from 'jwt-decode'
+import { signin, signup } from '../../actions/auth'
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
 
 const Auth = () => {
   const classes = useStyles()
   const [showPassword, setShowPassword] = useState(false)
   const dispatch = useDispatch()
   const [isSignup, setIsSignup] = useState(false)
+  const [formData, setFormData] = useState(initialState)
   const navigate = useNavigate()
 
 
   const handleShowPassword = () => setShowPassword((prev) => !prev)
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if(isSignup) {
+      dispatch(signup(formData, navigate))
+    } else {
+      dispatch(signin(formData, navigate))
+    }
 
   }
 
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const switchMode = () => {
@@ -31,7 +43,7 @@ const Auth = () => {
   }
 
   const googleSuccess = async (res) => {
-    const result = res
+    const result = jwt_decoded(res?.credential)
 
     try {
       dispatch({ type: 'AUTH', data: { result }})
@@ -55,7 +67,7 @@ const Auth = () => {
               isSignup && (
                 <>
                    <Input name='firstName' label='First Name' handleChange={handleChange} autoFocus xs={6} half/>                
-                   <Input name='firstName' label='First Name' handleChange={handleChange} half/>                
+                   <Input name='lastName' label='Last Name' handleChange={handleChange} half/>                
                 </>
               )}
               <Input name='email' label='Email Address' handleChange={handleChange} type='email'/>

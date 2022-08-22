@@ -10,10 +10,12 @@ export default makeStyles((theme) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 10px',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        opacity: '0.9'
     },
     heading: {
         color: 'secondary',
+        fontFamily: 'Poppins, sans-serif',
         textDecoration:'none' 
     
     },
@@ -54,5 +56,18 @@ export default makeStyles((theme) => ({
             alignItems: 'center',
             justifyContent: 'center'
         }
+      },
+      button: {
+        fontFamily: 'Poppins, sans-serif',
+        padding: '10px',
+	    width: '200px',
+	    margin: '0 auto',
+	    borderRadius: '50px',
+	    border: 'none',
+	    textTransform: 'uppercase',
+	    fontWeight: '700',
+	    color: '#fff',
+	    background: 'linear-gradient(to right, teal, lightblue)',
+	    cursor: 'pointer',
       }
 }))

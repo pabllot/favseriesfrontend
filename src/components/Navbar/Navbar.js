@@ -15,21 +15,34 @@ const Navbar = () => {
   const [user, setUser ] = useState(JSON.parse(localStorage.getItem('profile')))
   const navigate = useNavigate()
 
-  
-  
-  useEffect(() => {
-    const resu = user?.credential
+  const logout = () => {
+    dispatch({ type: 'LOGOUT'})
+    navigate('/')
+    setUser(null)
+  }
 
-    setUser(JSON.parse(localStorage.getItem('profile')))
   
-  }, [setUser])
+  
+  //useEffect(() => {
+  //  const resu = user?.credential
+//
+  //  setUser(JSON.parse(localStorage.getItem('profile')))
+  //
+  //}, [setUser])
+
+    const refresh = () => {
+      window.location.reload()
+    }
 
     const googleSuccess = async (res) => {
-        const result = jwt_decoded(res?.credential)     
+        const result = jwt_decoded(res?.credential) 
+        
+        console.log(result)
     
         try {
           dispatch({ type: 'AUTH', data: { result }})
           navigate('/')
+          refresh()
         } catch (error) {
           console.log(error)
         }
@@ -39,21 +52,20 @@ const Navbar = () => {
     return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
         <div className={classes.brandContainer}>
-            <Typography component={Link} to='/' className={classes.heading} variant='h3' align='center'>FavSerieS</Typography>
+            <Typography component={Link} to='/' className={classes.heading} variant='h3' align='center'>urfav.series</Typography>
         </div>
         <Toolbar className={classes.toolbar}>
             {user ? (
                 <div className={classes.profile}>
-                    <Avatar className={classes.purple} alt={user.result.given_name} src={user.result.picture}>oi</Avatar>
-                    <Typography className={classes.userName} variant='h6'>{user.result.given_name}</Typography>
-                    <Button variant='contained' className={classes.logout} color='secondary'></Button>
+                    <Avatar className={classes.purple} alt={user.result.name} src={user.result.picture}>oi</Avatar>
+                    <Typography className={classes.userName} variant='h6'>{user.result.name}</Typography>
                 </div>
             ) : (
-                <Button component={Link} to='/auth' className={classes.signin} variant='contained' color='primary'>Sign in</Button>
+                <Button component={Link} to='/auth' className={classes.button} variant='contained' color='primary'>Sign in</Button>
             )}
                <Button fullWidth className='google'>
             {user ? (
-              <div>you're in</div>
+              <Button variant='contained' onClick={logout} className={classes.button}>Log out</Button>
             ) : (
               <GoogleLogin
               onSuccess={googleSuccess}

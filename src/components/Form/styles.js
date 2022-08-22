@@ -8,11 +8,13 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    opacity: '0.9'
   },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    
   },
   fileInput: {
     width: '97%',
@@ -22,4 +24,17 @@ export default makeStyles((theme) => ({
   buttonSubmit: {
     marginBottom: 10,
   },
+  button: {
+  fontFamily: 'Poppins, sans-serif',
+  padding: '10px',
+  margin: '0 auto',
+  marginBottom: '10px',
+  borderRadius: '50px',
+  border: 'none',
+  textTransform: 'uppercase',
+  fontWeight: '700',
+  color: '#fff',
+  background: 'linear-gradient(to right, teal, lightblue)',
+  cursor: 'pointer',
+  }
 }));

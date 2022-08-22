@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
-    background-color: #e9e7e7;
-  
+    background: linear-gradient(180deg, rgb(29, 42, 104) 0%, rgb(77, 98, 175) 30%, rgb(39, 129, 141) 50%, rgb(51, 195, 178) 70%, rgb(33, 144, 169) 100%);
+    font-family: 'Poppins', sans-serif; 
 }

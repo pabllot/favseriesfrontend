@@ -4,6 +4,7 @@ export default makeStyles((theme) => ({
   mainContainer: {
     display: 'flex',
     alignItems: 'center',
+    fontFamily: 'Poppins, sans-serif',
   },
   smMargin: {
     margin: theme.spacing(1),
