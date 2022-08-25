@@ -39,7 +39,7 @@ const Auth = () => {
 
   const switchMode = () => {
     setIsSignup((prev) => !prev)
-    handleShowPassword(false)
+    setShowPassword(false)
   }
 
   const googleSuccess = async (res) => {
@@ -86,7 +86,7 @@ const Auth = () => {
               onError={() => console.log('Errrrrou')} />
             )}
           </Button>
-          <Grid container justify='flex-end'>
+          <Grid container justifyContent='flex-end'>
             <Grid item>
               <Button onClick={switchMode}>
                 { isSignup ? 'Already have an account? Sign in' : 'Do not have an account? Sign up'}
