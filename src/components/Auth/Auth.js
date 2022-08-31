@@ -3,10 +3,8 @@ import React, { useState } from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import useStyles from './styles'
 import Input from './input'
-import { GoogleLogin, googleLogout } from '@react-oauth/google'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import jwt_decoded from 'jwt-decode'
 import { signin, signup } from '../../actions/auth'
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
@@ -42,18 +40,6 @@ const Auth = () => {
     setShowPassword(false)
   }
 
-  const googleSuccess = async (res) => {
-    const result = jwt_decoded(res?.credential)
-
-    try {
-      dispatch({ type: 'AUTH', data: { result }})
-
-      navigate('/')
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   return (
     <Container component='main' maxWidth='xs'>
       <Paper className={classes.paper} elevation={3}>
@@ -76,15 +62,6 @@ const Auth = () => {
           </Grid>
           <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
             {isSignup ? 'Sign up' : 'Sign in'}
-          </Button>
-          <Button  fullWidth  color='inherit'>
-            {isSignup ? (
-              <div>you're in</div>
-            ) : (
-              <GoogleLogin
-              onSuccess={(googleSuccess)}
-              onError={() => console.log('Errrrrou')} />
-            )}
           </Button>
           <Grid container justifyContent='flex-end'>
             <Grid item>

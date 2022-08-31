@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
         margin: '30px 0',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         padding: '10px 10px',
         flexWrap: 'wrap',
@@ -22,7 +22,7 @@ export default makeStyles((theme) => ({
   
     profile: {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         width: '400px'
     },
     userName:{
@@ -44,6 +44,9 @@ export default makeStyles((theme) => ({
         padding: '0',
     
         
+    },
+    p: {
+        display: 'none',
     },
     [theme.breakpoints.down('xs')]:{
 
