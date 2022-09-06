@@ -1,29 +1,27 @@
 import React from 'react'
 import { Container} from '@material-ui/core'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { GoogleOAuthProvider } from '@react-oauth/google'
 
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home'
 import Auth from './components/Auth/Auth'
-
+import Form from './components/Form/Form'
 
 const App = () => {
-  
+  const user = JSON.parse(localStorage.getItem('profile'))
 
   return (
-    
-    <GoogleOAuthProvider clientId='471598104331-ota3237h72jq9t8m5208p37s4uavg835.apps.googleusercontent.com'>  
       <BrowserRouter>      
-        <Container maxWidth='lg'>
+        <Container maxWidth='xl'>
          <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/auth' element={<Auth />} />
+            <Route path='/posts' element={<Home />} />
+            <Route path='/auth' element={(!user ? <Auth /> : <Home />)} />
+            <Route path='/form' element={<Form />} />
           </Routes>
         </Container>        
       </BrowserRouter>
-    </GoogleOAuthProvider> 
   )
 }
 

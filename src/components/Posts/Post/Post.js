@@ -15,9 +15,6 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('profile'))
 
-  console.log(user)
-
-
   const Likes = () => {
     if(post.likes.length > 0) {
       return post.likes.find((like) => like === (user?.result?.sub || user?.result?._id))
@@ -40,7 +37,7 @@ const Post = ({ post, setCurrentId }) => {
       </div>
       {(user?.result?._id === post?.creator) && (
       <div className={classes.overlay2}>
-        <Button style={{color: 'white'}} size='small' onClick={() => setCurrentId(post._id)}>
+        <Button style={{color: 'white'}} size='small' z>
           <MoreHorizIcon fontSize='medium' />
         </Button>
       </div>

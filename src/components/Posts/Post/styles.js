@@ -64,7 +64,7 @@ export default makeStyles({
 
   },
   desc: {
-    maxHeight: '150px',
+    maxHeight: '149px',
     overflow: 'auto',
     fontFamily: 'Poppins, sans-serif',
   }

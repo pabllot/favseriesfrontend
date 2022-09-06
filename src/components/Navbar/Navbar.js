@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Button, Toolbar, Typography } from '@material-ui/core'
 import useStyles from './styles'
 import { useDispatch } from 'react-redux'
 import decode from 'jwt-decode'
@@ -26,28 +26,30 @@ const Navbar = () => {
       const decodedToken = decode(token);
 
       if(decodedToken.exp * 1000 < new Date().getTime()) logout();
-      setUser(JSON.parse(localStorage.getItem('profile')))
     }
+    setUser(JSON.parse(localStorage.getItem('profile')))
   }, [location])
 
     
     return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
         <div className={classes.brandContainer}>
-            <Typography component={Link} to='/' className={classes.heading} variant='h3' align='center'>urfav.series</Typography>
+            <Typography component={Link} to='/' className={classes.heading} variant='h3' align='center'>Your Favorites</Typography>
         </div>
         <Toolbar className={classes.toolbar}>
             {user ? (
                 <div className={classes.profile}>
-                    <Avatar className={classes.purple} alt={user.result.name} src={user.result.picture}></Avatar>
                     <Typography className={classes.userName} variant='h6'>{user.result.name}</Typography>
                 </div>
             ) : (
-                <Button component={Link} to='/auth' className={classes.button} variant='contained' color='primary'>Sign in</Button>
+                <Button component={Link} to='/auth' className={classes.button} variant='contained' color='primary'>Log In</Button>
             )}
 
                   {user ? (
-                  <Button fullWidth variant='contained' onClick={logout} className={classes.button}>Log out</Button>
+                    <>
+                  <Button fullWidth variant='contained' component={Link} to='/form' className={classes.button}>Add new</Button> 
+                  <Button fullWidth variant='contained' onClick={logout} className={classes.logout}>Log out</Button>
+                    </>
                   ) : <p className={classes.p}>-</p>}
         
         </Toolbar>

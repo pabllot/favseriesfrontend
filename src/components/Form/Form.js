@@ -7,7 +7,11 @@ import { useSelector } from 'react-redux'
 import useStyles from './styles'
 import { createPost, updatePost } from '../../actions/posts'
 
-const Form = ({ setCurrentId, currentId }) => {
+
+
+
+const Form = () => {
+  const [currentId, setCurrentId] = useState(null)
   const [postData, setPostData] = useState({
      title: '', description: '', tags: '', selectedFile: ''
   })
@@ -44,7 +48,7 @@ const Form = ({ setCurrentId, currentId }) => {
     return (
       <Paper className={classes.paper}>
         <Typography variant='h6' align='center'>
-          Please Sign in to add your favorite series
+          Sign in to add your favorite series
         </Typography>
       </Paper>
     )
@@ -54,7 +58,7 @@ const Form = ({ setCurrentId, currentId }) => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant='h6'className={classes.h6}>{currentId ? 'Editing' : 'Adding'} your favorite serie</Typography>
+        <Typography variant='h6'className={classes.h6}>{currentId ? 'Editing' : 'Add'} your favorite series</Typography>
           <TextField  name='title' variant='outlined' label='Title' fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value})} />
           <TextField  name='description' variant='outlined' label='Description' fullWidth value={postData.description} onChange={(e) => setPostData({ ...postData, description: e.target.value})} />
           <TextField  name='tags' variant='outlined' label='Tags' fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value})} />

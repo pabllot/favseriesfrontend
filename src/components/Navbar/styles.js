@@ -4,26 +4,23 @@ import { deepPurple } from "@material-ui/core/colors";
 export default makeStyles((theme) => ({
     appBar: {
         borderRadius: 15,
-        margin: '30px 0',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '10px 10px',
-        flexWrap: 'wrap',
-        opacity: '0.9'
+        opacity: '0.95',
+        marginBottom: '30px'
     },
     heading: {
-        color: 'secondary',
+        color: 'teal',
         fontFamily: 'Poppins, sans-serif',
         textDecoration:'none' 
     
     },
   
     profile: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '400px'
+        width: '40px',
+        display: 'none',
     },
     userName:{
         display: 'flex',
@@ -53,9 +50,13 @@ export default makeStyles((theme) => ({
         mainContainer: {
           flexDirection: 'column-reverse'
         },
+
+        appBar: {
+            justifyContent: 'space-around'
+        },
         heading: {
             width: '10px',
-            fontSize: '27px',
+            fontSize: '14px',
             alignItems: 'center',
             justifyContent: 'center'
         }
@@ -63,14 +64,30 @@ export default makeStyles((theme) => ({
       button: {
         fontFamily: 'Poppins, sans-serif',
         padding: '10px',
-	    width: '200px',
+	    width: '130px',
 	    margin: '0 auto',
 	    borderRadius: '50px',
 	    border: 'none',
 	    textTransform: 'uppercase',
 	    fontWeight: '700',
 	    color: '#fff',
-	    background: 'linear-gradient(to right, teal, lightblue)',
+	    background: 'teal',
 	    cursor: 'pointer',
+       
+      },
+      logout: {
+        fontFamily: 'Poppins, sans-serif',
+        padding: '10px',
+	    width: '130px',
+	    margin: '0 auto',
+	    borderRadius: '50px',
+	    border: 'none',
+	    textTransform: 'uppercase',
+	    fontWeight: '700',
+	    color: '#fff',
+	    background: 'red',
+	    cursor: 'pointer',
+        marginLeft: '4px'
+       
       }
 }))

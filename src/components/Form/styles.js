@@ -8,12 +8,16 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    opacity: '0.9'
+    opacity: '0.9',
+    borderRadius: 15,
+    maxWidth: '500px',
+    margin: 'auto'
   },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    
     
   },
   fileInput: {
