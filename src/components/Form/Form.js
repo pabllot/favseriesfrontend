@@ -12,7 +12,7 @@ import { createPost, updatePost } from '../../actions/posts'
 
 const Form = () => {
   const [currentId, setCurrentId] = useState(null)
-  const [postData, setPostData] = useState({
+  const [postData, setPostData] = useState({ 
      title: '', description: '', tags: '', selectedFile: ''
   })
   const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId ) : null)
@@ -48,7 +48,7 @@ const Form = () => {
     return (
       <Paper className={classes.paper}>
         <Typography variant='h6' align='center'>
-          Sign in to add your favorite series
+          Sign in now to add your favorite series
         </Typography>
       </Paper>
     )
