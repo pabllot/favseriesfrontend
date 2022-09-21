@@ -10,8 +10,7 @@ import { createPost, updatePost } from '../../actions/posts'
 
 
 
-const Form = () => {
-  const [currentId, setCurrentId] = useState(null)
+const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({ 
      title: '', description: '', tags: '', selectedFile: ''
   })

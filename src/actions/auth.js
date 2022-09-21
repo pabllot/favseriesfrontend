@@ -4,11 +4,10 @@ import * as api from '../api/index.js';
 
 export const signin = (formData, navigate) => async (dispatch) => {
     try {
-        //log in the user //
+        //log in the existing user //
         const { data } = await api.signIn(formData)
 
         dispatch({ type: AUTH, data })
-
         navigate('/')
         window.location.reload()
     } catch (error) {
