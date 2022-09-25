@@ -19,6 +19,27 @@ export default makeStyles((theme) => ({
   mainContainer: {
     flexDirection: 'column-reverse',
   },
+  button: {
+    fontFamily: 'Poppins, sans-serif',
+    padding: '10px',
+    width: '130px',
+    margin: '0 auto',
+    borderRadius: '50px',
+    border: 'none',
+    textTransform: 'uppercase',
+    fontWeight: '700',
+    color: 'teal',
+    background: 'white',
+    cursor: 'pointer',
+   
+  },
+  wrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '10px'
+
+  },
  
   [theme.breakpoints.down('xs')]:{
 

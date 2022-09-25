@@ -11,10 +11,15 @@ const Home = () => {
   const [currentId, setCurrentId] = useState(null)
   const classes = useStyles()
   const dispatch = useDispatch()
+  const [isShowForm, setIsShowForm] = useState(false)
 
   useEffect(() => {
     dispatch(getPosts()) 
   }, [currentId, dispatch])
+
+  const handleClick = () => {
+    setIsShowForm(prev => !prev)
+  }
 
 
   return (
@@ -25,7 +30,11 @@ const Home = () => {
               <Posts setCurrentId={setCurrentId} currentId={currentId} />
             </Grid> 
             <Grid >
-              <Form  setCurrentId={setCurrentId} currentId={currentId} />
+              <div className={classes.wrapper}>
+                <button className={classes.button} onClick={handleClick}>{ !isShowForm ? 'Add New' : 'Close' }</button>
+              </div>
+              { isShowForm &&
+              <Form  setCurrentId={setCurrentId} currentId={currentId} /> }
             </Grid>         
           </Grid>
         </Container>

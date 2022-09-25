@@ -46,8 +46,7 @@ const Navbar = () => {
             )}
 
                   {user ? (
-                    <>
-                  <Button fullWidth variant='contained' component={Link} to='/form' className={classes.button}>Add new</Button> 
+                    <> 
                   <Button fullWidth variant='contained' onClick={logout} className={classes.logout}>Log out</Button>
                     </>
                   ) : <p className={classes.p}>-</p>}

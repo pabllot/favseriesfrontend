@@ -34,11 +34,11 @@ export default makeStyles((theme) => ({
   margin: '0 auto',
   marginBottom: '10px',
   borderRadius: '50px',
-  border: 'none',
+  border: '2px solid teal',
   textTransform: 'uppercase',
   fontWeight: '700',
-  color: '#fff',
-  background: 'linear-gradient(to right, teal, lightblue)',
+  color: 'teal',
+  background: 'white',
   cursor: 'pointer',
   }
 }));
