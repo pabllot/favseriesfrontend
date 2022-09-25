@@ -46,7 +46,7 @@ const Auth = () => {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography variant='h5'>{!isSignup ? 'Log in' : 'Create account'}</Typography>
+        <Typography variant='h5'>{!isSignup ? 'Log in' : 'Create Account'}</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             {
@@ -66,7 +66,7 @@ const Auth = () => {
           <Grid container justifyContent='flex-end'>
             <Grid item>
               <Button type='button'  variant='contained' color='secondary' onClick={switchMode}>
-                { isSignup ? 'Click here to Log in' : 'Click here to create a new account'}
+                { isSignup ? 'Click here to Log in' : 'Click here to Create a New Account'}
               </Button>
             </Grid>
           </Grid>
