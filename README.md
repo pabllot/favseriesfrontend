@@ -13,5 +13,5 @@ On the client side of this project I've used <b>ReactJS</b> best practices, such
 <p><b> - Redux Toolkit</b></p>
 <p>- Material-ui </p>
 
-Link to the website: https://favseriesapp.vercel.app/
-Code for the backend: https://github.com/pabllot/favseriesbackend
+<p>Link to the website: https://favseriesapp.vercel.app/ </p>
+<p>Code for the backend: https://github.com/pabllot/favseriesbackend </p>
